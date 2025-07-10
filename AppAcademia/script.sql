@@ -1,80 +1,97 @@
-USE AcademiaDB;
+ÔªøUSE AcademiaDB;
 
--- Primero eliminar las tablas hijas que tienen FK
-DROP TABLE IF EXISTS Inscripciones;
-DROP TABLE IF EXISTS ContenidoCurso;
+-- ============================================
+-- 1Ô∏è‚É£ Tabla de Roles
+-- ============================================
 
--- Luego eliminar las tablas padres
-DROP TABLE IF EXISTS Cursos;
-DROP TABLE IF EXISTS Usuarios;
-
--- Crear tabla Usuarios
-CREATE TABLE Usuarios (
-    UsuarioID INT PRIMARY KEY IDENTITY(1,1),
-    Nombre NVARCHAR(100),
-    Email NVARCHAR(100) UNIQUE,
-    Password NVARCHAR(100),
-    Rol NVARCHAR(50) -- Admin, Instructor, Estudiante
+CREATE TABLE Roles (
+    RolID INT PRIMARY KEY IDENTITY(1,1),
+    NombreRol NVARCHAR(50) NOT NULL UNIQUE
 );
 
--- Crear tabla Cursos
+-- Insertar roles b√°sicos
+INSERT INTO Roles (NombreRol) VALUES ('Admin'), ('Instructor'), ('Estudiante');
+
+-- ============================================
+-- 2Ô∏è‚É£ Tabla de Usuarios
+-- ============================================
+
+CREATE TABLE Usuarios (
+    UsuarioID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(256) NOT NULL,
+    Salt NVARCHAR(50) NOT NULL,
+    RolID INT NOT NULL,
+    Activo BIT DEFAULT 1,
+    FOREIGN KEY (RolID) REFERENCES Roles(RolID)
+);
+
+INSERT INTO Usuarios (Nombre, Email, PasswordHash, Salt, RolID)
+VALUES 
+('Admin Principal', 'admin@miapp.com', 'HASH_ADMIN', 'SALT_ADMIN', 1),
+
+('Instructor 1', 'instructor1@miapp.com', 'HASH_INSTRUCTOR1', 'SALT_INSTRUCTOR1', 2),
+('Instructor 2', 'instructor2@miapp.com', 'HASH_INSTRUCTOR2', 'SALT_INSTRUCTOR2', 2),
+
+('Estudiante 1', 'estudiante1@miapp.com', 'HASH_ESTUDIANTE1', 'SALT_ESTUDIANTE1', 3),
+('Estudiante 2', 'estudiante2@miapp.com', 'HASH_ESTUDIANTE2', 'SALT_ESTUDIANTE2', 3),
+('Estudiante 3', 'estudiante3@miapp.com', 'HASH_ESTUDIANTE3', 'SALT_ESTUDIANTE3', 3);
+
+SELECT * FROM Usuarios;
+
+-- ============================================
+-- 3Ô∏è‚É£ Tabla de Cursos
+-- ============================================
+
 CREATE TABLE Cursos (
     CursoID INT PRIMARY KEY IDENTITY(1,1),
-    Nombre NVARCHAR(100),
+    Nombre NVARCHAR(100) NOT NULL,
     Descripcion NVARCHAR(MAX),
-    InstructorID INT,
+    InstructorID INT NOT NULL,
     CupoMaximo INT NOT NULL DEFAULT 50,
+    Activo BIT DEFAULT 1,
     FOREIGN KEY (InstructorID) REFERENCES Usuarios(UsuarioID)
 );
 
--- Crear tabla Inscripciones
+
+
+SELECT * FROM Cursos;
+
+-- ============================================
+-- 4Ô∏è‚É£ Tabla de Inscripciones
+-- ============================================
+
 CREATE TABLE Inscripciones (
     InscripcionID INT PRIMARY KEY IDENTITY(1,1),
-    CursoID INT,
-    EstudianteID INT,
+    CursoID INT NOT NULL,
+    EstudianteID INT NOT NULL,
     FechaInscripcion DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID),
     FOREIGN KEY (EstudianteID) REFERENCES Usuarios(UsuarioID)
 );
 
--- Crear tabla ContenidoCurso
+-- ============================================
+-- 5Ô∏è‚É£ Tabla de ContenidoCurso
+-- ============================================
+
 CREATE TABLE ContenidoCurso (
     ContenidoID INT PRIMARY KEY IDENTITY(1,1),
-    CursoID INT,
+    CursoID INT NOT NULL,
     Tipo NVARCHAR(50), -- Archivo, Link
     URL NVARCHAR(MAX),
     Descripcion NVARCHAR(255),
     FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID)
 );
 
--- Insertar datos de prueba
-INSERT INTO Usuarios (Nombre, Email, Password, Rol)
-VALUES 
-('Admin Principal', 'admin@academia.com', 'admin123', 'Admin'),
-('Instructor A', 'instructorA@academia.com', 'pass123', 'Instructor'),
-('Instructor B', 'instructorB@academia.com', 'pass456', 'Instructor'),
-('Estudiante X', 'estudianteX@academia.com', '123456', 'Estudiante'),
-('Estudiante Y', 'estudianteY@academia.com', 'abcdef', 'Estudiante');
+-- ============================================
+-- 6Ô∏è‚É£ Tabla de Logs (opcional, para auditor√≠a)
+-- ============================================
 
--- Insertar Cursos (ahora sÌ existe Usuarios)
-INSERT INTO Cursos (Nombre, Descripcion, InstructorID, CupoMaximo)
-VALUES 
-('IntroducciÛn a C#', 'Curso b·sico de programaciÛn en C# y fundamentos de .NET.', 2, 30),
-('Desarrollo Web con ASP.NET', 'Aprende a crear aplicaciones web usando ASP.NET Web Forms y MVC.', 3, 25),
-('SQL Server para Desarrolladores', 'Consulta, modelado y administraciÛn b·sica de bases de datos en SQL Server.', 2, 40),
-('Fundamentos de JavaScript', 'Desde cero hasta lÛgica intermedia con JS moderno.', 3, 50),
-('DiseÒo de Interfaces con Bootstrap', 'Aprende a crear interfaces modernas y responsivas.', 2, 35);
-
-
--- Inscripciones de Estudiante X (ID 4) y Estudiante Y (ID 5)
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (1, 4);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (2, 4);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (3, 4);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (4, 4);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (5, 4);
-
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (1, 5);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (2, 5);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (3, 5);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (4, 5);
-INSERT INTO Inscripciones (CursoID, EstudianteID) VALUES (5, 5);
+CREATE TABLE Logs (
+    LogID INT PRIMARY KEY IDENTITY(1,1),
+    UsuarioID INT,
+    Accion NVARCHAR(100),
+    Fecha DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID)
+);
