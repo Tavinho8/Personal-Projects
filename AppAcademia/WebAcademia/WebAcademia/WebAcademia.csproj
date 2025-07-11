@@ -133,15 +133,19 @@
     <Content Include="Pages\Admin\AdminDashboard.aspx" />
     <Content Include="Pages\Admin\CursosAdmin.aspx" />
     <Content Include="Pages\Admin\CursosFormAdmin.aspx" />
+    <Content Include="Pages\Admin\UsuariosAdmin.aspx" />
+    <Content Include="Pages\Admin\UsuariosFormAdmin.aspx" />
     <Content Include="Pages\Error.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Logout.aspx" />
     <Content Include="Pages\Register.aspx" />
+    <Content Include="Pages\Shared\StyleAdmin\StyleAdminDashboard.css" />
     <Content Include="Pages\Shared\StyleCursosAdmin.css" />
     <Content Include="Pages\Shared\StyleCursosFormAdmin.css" />
     <Content Include="Pages\Shared\StyleLogin.css" />
     <Content Include="Pages\Shared\StyleRegister.css" />
+    <Content Include="Pages\Shared\StyleUsuariosAdmin\StyleUsuariosAdmin.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -240,6 +244,20 @@
     </Compile>
     <Compile Include="Pages\Admin\CursosFormAdmin.aspx.designer.cs">
       <DependentUpon>CursosFormAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\UsuariosAdmin.aspx.cs">
+      <DependentUpon>UsuariosAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\UsuariosAdmin.aspx.designer.cs">
+      <DependentUpon>UsuariosAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\UsuariosFormAdmin.aspx.cs">
+      <DependentUpon>UsuariosFormAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin\UsuariosFormAdmin.aspx.designer.cs">
+      <DependentUpon>UsuariosFormAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>

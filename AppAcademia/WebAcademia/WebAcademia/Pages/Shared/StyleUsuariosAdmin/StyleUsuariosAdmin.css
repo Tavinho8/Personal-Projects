@@ -1,0 +1,107 @@
+﻿/* ✅ Variables para tema */
+:root {
+    --primary-color: #0f3b57;
+    --accent-color: #2fb5c1;
+    --orange-color: #f25c05;
+    --orange-hover: #d94c00;
+    --light-bg: #d4f1f4;
+    --text-color: #333;
+    --radius: 10px;
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px; /* espacio arriba y abajo */
+    background: linear-gradient(45deg, var(--light-bg) 50%, var(--orange-color) 50%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    box-sizing: border-box;
+    position: relative;
+    /* Sin flexbox para no forzar centrado vertical */
+}
+
+    body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, var(--primary-color) 35%, var(--accent-color) 35%);
+        clip-path: polygon(0 0, 100% 0, 100% 40%, 50% 70%, 0 40%);
+        z-index: -1;
+        opacity: 0.7;
+    }
+
+.courses-card {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    max-width: 900px;
+    width: 100%;
+    margin: 40px auto; /* margen arriba y abajo, centrado horizontal */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Scroll interno para tabla (como ya tienes) */
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+/* ✅ Botón naranja para agregar */
+.btn-orange {
+    background: var(--orange-color);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+    .btn-orange:hover {
+        background: var(--orange-hover);
+        color: #fff;
+    }
+
+/* ✅ Tabla responsive */
+.table-responsive {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.table {
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+    .table th,
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table a,
+    .table .btn {
+        transition: all 0.2s ease-in-out;
+    }
+
+        .table .btn:hover {
+            opacity: 0.85;
+        }
+
+/* ✅ Responsive ajustes */
+@media (max-width: 768px) {
+    .courses-card {
+        padding: 20px;
+        margin: 20px; /* Menor margen en mobile */
+    }
+
+    .table-container {
+        max-height: none; /* Quitar límite en móvil */
+    }
+}
