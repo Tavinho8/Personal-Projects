@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- ✅ Estilo personalizado -->
-    <link href="../Shared/StyleUsuariosAdmin/StyleUsuariosAdmin.css" rel="stylesheet" />
+    <link href="../Shared/StyleAdmin.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -86,69 +86,69 @@
             <asp:Label ID="lblMensaje" runat="server" CssClass="form-text fw-bold mb-3"></asp:Label>
 
             <%-- ✅ Tabla Usuarios centrada con scroll interno --%>
-<div class="table-container">
-    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-        <asp:GridView ID="gvUsuarios" runat="server"
-            OnRowCommand="gvUsuarios_RowCommand"
-            CssClass="table table-striped table-bordered text-center"
-            AutoGenerateColumns="False"
-            AllowPaging="True"
-            PageSize="5"
-            PagerStyle-CssClass="text-center"
-            PagerStyle-HorizontalAlign="Center"
-            OnPageIndexChanging="gvUsuarios_PageIndexChanging">
+            <div class="table-container">
+                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                    <asp:GridView ID="gvUsuarios" runat="server"
+                        OnRowCommand="gvUsuarios_RowCommand"
+                        CssClass="table table-striped table-bordered text-center"
+                        AutoGenerateColumns="False"
+                        AllowPaging="True"
+                        PageSize="5"
+                        PagerStyle-CssClass="text-center"
+                        PagerStyle-HorizontalAlign="Center"
+                        OnPageIndexChanging="gvUsuarios_PageIndexChanging">
 
-            <Columns>
-                <%-- ✅ Nombre --%>
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                <%-- ✅ Email --%>
-                <asp:BoundField DataField="Email" HeaderText="Email" />
-                <%-- ✅ RolID --%>
-                <asp:TemplateField HeaderText="Rol">
-                    <ItemTemplate>
-                        <%# Eval("Rol.NombreRol") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                        <Columns>
+                            <%-- ✅ Nombre --%>
+                            <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                            <%-- ✅ Email --%>
+                            <asp:BoundField DataField="Email" HeaderText="Email" />
+                            <%-- ✅ RolID --%>
+                            <asp:TemplateField HeaderText="Rol">
+                                <ItemTemplate>
+                                    <%# Eval("Rol.NombreRol") %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                <%-- ✅ Estado --%>
-                <asp:TemplateField HeaderText="Activo">
-                    <ItemTemplate>
-                        <%# Convert.ToBoolean(Eval("Activo")) ? "Sí" : "No" %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <%-- ✅ Acciones --%>
-                <asp:TemplateField HeaderText="Acciones">
-                    <ItemTemplate>
-                        <div class="d-flex justify-content-center">
-                            <a href='<%# Eval("UsuarioID", "UsuariosFormAdmin.aspx?id={0}") %>' class="btn btn-sm btn-primary me-2">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <asp:LinkButton ID="lnkEliminar" runat="server"
-                                CssClass="btn btn-sm btn-danger eliminar-btn"
-                                CommandArgument='<%# Eval("UsuarioID") %>'
-                                CommandName="Eliminar">
+                            <%-- ✅ Estado --%>
+                            <asp:TemplateField HeaderText="Activo">
+                                <ItemTemplate>
+                                    <%# Convert.ToBoolean(Eval("Activo")) ? "Sí" : "No" %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%-- ✅ Acciones --%>
+                            <asp:TemplateField HeaderText="Acciones">
+                                <ItemTemplate>
+                                    <div class="d-flex justify-content-center">
+                                        <a href='<%# Eval("UsuarioID", "UsuariosFormAdmin.aspx?id={0}") %>' class="btn btn-sm btn-primary me-2">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <asp:LinkButton ID="lnkEliminar" runat="server"
+                                            CssClass="btn btn-sm btn-danger eliminar-btn"
+                                            CommandArgument='<%# Eval("UsuarioID") %>'
+                                            CommandName="Eliminar">
                                 <i class="fas fa-trash"></i>
-                            </asp:LinkButton>
-                        </div>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
+                                        </asp:LinkButton>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
 
-            <%-- ✅ Paginación personalizada centrada --%>
-            <PagerTemplate>
-                <div class="d-flex justify-content-center">
-                    <asp:LinkButton runat="server" CommandName="Page" CommandArgument="Prev" CssClass="btn btn-sm btn-outline-secondary me-2">
+                        <%-- ✅ Paginación personalizada centrada --%>
+                        <PagerTemplate>
+                            <div class="d-flex justify-content-center">
+                                <asp:LinkButton runat="server" CommandName="Page" CommandArgument="Prev" CssClass="btn btn-sm btn-outline-secondary me-2">
                         <i class="fas fa-angle-left"></i> Anterior
-                    </asp:LinkButton>
-                    <asp:LinkButton runat="server" CommandName="Page" CommandArgument="Next" CssClass="btn btn-sm btn-outline-secondary">
+                                </asp:LinkButton>
+                                <asp:LinkButton runat="server" CommandName="Page" CommandArgument="Next" CssClass="btn btn-sm btn-outline-secondary">
                         Siguiente <i class="fas fa-angle-right"></i>
-                    </asp:LinkButton>
-                </div>
-            </PagerTemplate>
+                                </asp:LinkButton>
+                            </div>
+                        </PagerTemplate>
 
-        </asp:GridView>
-    </div>
-</div>
+                    </asp:GridView>
+                </div>
+            </div>
 
 
             <%-- ✅ Controles inferiores --%>

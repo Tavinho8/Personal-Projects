@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    
+
     <!-- Hoja estilo  -->
     <link href="../Shared/StyleAdmin/StyleAdminDashboard.css" rel="stylesheet" />
 </head>
@@ -20,12 +20,13 @@
         <!-- Sidebar -->
         <nav class="sidebar" id="sidebar">
             <div class="logo"><span>WebAcademia Admin</span></div>
-            <a href="AdminDashboard.aspx"><i class="fas fa-home"></i><span>Dashboard</span></a>
-            <a href="CursosAdmin.aspx"><i class="fas fa-book"></i><span>Cursos</span></a>
-            <a href="#"><i class="fas fa-user-graduate"></i><span>Estudiantes</span></a>
-            <a href="#"><i class="fas fa-chalkboard-teacher"></i><span>Instructores</span></a>
-            <a href="../Logout.aspx"><i class="fas fa-sign-out-alt"></i><span>Cerrar Sesión</span></a>
+            <a href="AdminDashboard.aspx"><i class="fas fa-home me-2"></i><span>Dashboard</span></a>
+            <a href="CursosAdmin.aspx"><i class="fas fa-book me-2"></i><span>Cursos</span></a>
+            <a href="#"><i class="fas fa-user-graduate me-2"></i><span>Estudiantes</span></a>
+            <a href="#"><i class="fas fa-chalkboard-teacher me-2"></i><span>Inscripciones</span></a>
+            <a href="../Logout.aspx"><i class="fas fa-sign-out-alt me-2"></i><span>Cerrar Sesión</span></a>
         </nav>
+
 
         <!-- Topbar -->
         <header class="topbar" id="topbar">

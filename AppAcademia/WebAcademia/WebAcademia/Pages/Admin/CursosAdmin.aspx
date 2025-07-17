@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- ✅ Estilo personalizado -->
-    <link href="../Shared/StyleCursosAdmin.css" rel="stylesheet" />
+    <link href="../Shared/StyleAdmin.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -89,7 +89,7 @@
 
             <%-- ✅ Tabla Cursos centrada --%>
             <div class="table-container">
-                <div class="table-responsive">
+                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
                     <asp:GridView ID="gvCursos" runat="server"
                         OnRowCommand="gvCursos_RowCommand"
                         CssClass="table table-striped table-bordered text-center"

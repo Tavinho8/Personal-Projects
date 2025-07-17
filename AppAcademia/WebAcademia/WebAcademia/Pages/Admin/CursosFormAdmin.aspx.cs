@@ -43,7 +43,7 @@ namespace WebAcademia.Pages.Admin
         /// </summary>
         private void CargarInstructores()
         {
-            var instructores = usuarioDAL.ListadoIntrctores();
+            var instructores = usuarioDAL.ListadoIntructores();
 
             ddlInstructor.DataSource = instructores;
             ddlInstructor.DataTextField = "Nombre";         // Campo visible

@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Hoja de estilos personalizada para el formulario de cursos -->
-    <link rel="stylesheet" href="../Shared/StyleCursosFormAdmin.css" />
+    <link rel="stylesheet" href="../Shared/StyleFormAdmin.css" />
 </head>
 
 <body>
@@ -80,21 +80,21 @@
 
             <%-- Botones de acción: Guardar y Cancelar --%>
             <div class="d-flex justify-content-between">
-                <%-- Botón Guardar: ejecuta validación de confirmación y luego postback --%>
-                <asp:Button
+                <asp:LinkButton
                     ID="btnGuardar"
                     runat="server"
-                    Text="Guardar"
                     CssClass="btn btn-primary w-50 me-2"
-                    OnClick="btnGuardar_Click" />
+                    OnClick="btnGuardar_Click">
+                    <i class="fas fa-save me-1"></i> Guardar
+                </asp:LinkButton>
 
-                <%-- Botón Cancelar: redirige o limpia datos --%>
-                <asp:Button
+                <asp:LinkButton
                     ID="btnCancelar"
-                    CssClass="btn btn-secondary w-50"
                     runat="server"
-                    Text="Cancelar"
-                    OnClick="btnCancelar_Click" />
+                    CssClass="btn btn-secondary w-50"
+                    OnClick="btnCancelar_Click">
+                    <i class="fas fa-times me-1"></i> Cancelar
+                </asp:LinkButton>
             </div>
         </div>
     </form>

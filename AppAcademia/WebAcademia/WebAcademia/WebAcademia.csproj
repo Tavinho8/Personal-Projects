@@ -141,11 +141,10 @@
     <Content Include="Pages\Logout.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\Shared\StyleAdmin\StyleAdminDashboard.css" />
-    <Content Include="Pages\Shared\StyleCursosAdmin.css" />
-    <Content Include="Pages\Shared\StyleCursosFormAdmin.css" />
     <Content Include="Pages\Shared\StyleLogin.css" />
     <Content Include="Pages\Shared\StyleRegister.css" />
-    <Content Include="Pages\Shared\StyleUsuariosAdmin\StyleUsuariosAdmin.css" />
+    <Content Include="Pages\Shared\StyleAdmin.css" />
+    <Content Include="Pages\Shared\StyleFormAdmin.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -211,6 +210,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DAL\CursosDAL.cs" />
+    <Compile Include="DAL\RolesDAL.cs" />
     <Compile Include="DAL\UsuarioDAL.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Models\ContenidoCurso.cs" />

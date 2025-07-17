@@ -17,7 +17,7 @@ namespace WebAcademia.DAL
         /// Obtiene una lista de Instructores.
         /// </summary>
         /// <returns>Lista de instructores</returns>
-        public List<Usuario> ListadoIntrctores()
+        public List<Usuario> ListadoIntructores()
         {
             try
             {
@@ -169,15 +169,14 @@ namespace WebAcademia.DAL
         /// <param name="activo">Estado del Usuario: true para activos, false para inactivos, null para todos</param>
         /// <param name="gmail">Gmail parcial o completo del Usuario para filtrar (opcional)</param>
         /// <returns>Lista de Usuarios filtrada</returns>
-        public List<Usuario> GetUsuariosFiltrados(string nombre = null, bool? activo = null, string email = null)
+        public List<Usuario> GetUsuariosFiltrados(string nombre = null, bool? activo = null, string email = null, string rol = null)
         {
             try
             {
-                using(var contexto = new AppDBContext())
+                using (var contexto = new AppDBContext())
                 {
                     var query = contexto.Usuarios.Include("Rol").AsQueryable();
 
-                    //validacion para los datos si estan vacio
                     if (!string.IsNullOrEmpty(nombre))
                         query = query.Where(u => u.Nombre.Contains(nombre));
 
@@ -187,15 +186,21 @@ namespace WebAcademia.DAL
                     if (!string.IsNullOrEmpty(email))
                         query = query.Where(u => u.Email.Contains(email));
 
+                    if (!string.IsNullOrEmpty(rol))
+                        query = query.Where(u => u.Rol.NombreRol == rol);
+
                     return query.ToList();
                 }
-                
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al obtener la lista de usuarios filtrados", ex);
             }
+
+
         }//GetUsuariosFiltrados
 
-    }//class
+
+
+}//class
 }

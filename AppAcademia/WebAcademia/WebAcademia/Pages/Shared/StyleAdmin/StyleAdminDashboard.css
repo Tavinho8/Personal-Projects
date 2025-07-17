@@ -60,19 +60,22 @@ body {
     .sidebar a {
         display: flex;
         align-items: center;
-        color: var(--text-color-light);
-        padding: 12px 20px;
-        font-weight: 500;
-        white-space: nowrap;
+        padding: 10px;
+        color: white;
         text-decoration: none;
-        transition: background-color 0.3s ease;
     }
 
         .sidebar a i {
-            min-width: 25px;
-            font-size: 1.2rem;
-            margin-right: 12px;
-            text-align: center;
+            font-size: 18px;
+            margin-right: 12px; /* espacio consistente entre el icono y el texto */
+            width: 20px; /* ancho fijo para alinear todos los textos */
+            text-align: center; /* centrar el ícono dentro del ancho fijo */
+        }
+
+
+        .sidebar a span {
+            font-weight: bold;
+            font-size: 15px;
         }
 
         .sidebar a:hover {
