@@ -1,4 +1,5 @@
-﻿/* Variables de color */
+﻿/* --------------------------------------------- */
+/* Variables de color */
 :root {
     --sidebar-bg: #0f3b57;
     --sidebar-logo-bg: #f25c05;
@@ -10,6 +11,7 @@
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* --------------------------------------------- */
 /* Reset y cuerpo */
 body {
     min-height: 100vh;
@@ -19,6 +21,7 @@ body {
     font-family: var(--font-family);
 }
 
+/* --------------------------------------------- */
 /* Sidebar */
 .sidebar {
     position: fixed;
@@ -67,11 +70,10 @@ body {
 
         .sidebar a i {
             font-size: 18px;
-            margin-right: 12px; /* espacio consistente entre el icono y el texto */
-            width: 20px; /* ancho fijo para alinear todos los textos */
-            text-align: center; /* centrar el ícono dentro del ancho fijo */
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
         }
-
 
         .sidebar a span {
             font-weight: bold;
@@ -87,6 +89,7 @@ body {
         display: none;
     }
 
+/* --------------------------------------------- */
 /* Topbar */
 .topbar {
     position: fixed;
@@ -120,6 +123,7 @@ body {
             box-shadow: none;
         }
 
+/* --------------------------------------------- */
 /* Contenido */
 .content {
     margin-top: 60px;
@@ -132,6 +136,7 @@ body {
         margin-left: 60px;
     }
 
+/* --------------------------------------------- */
 /* Cards estadísticos */
 .stats-box {
     display: flex;
@@ -167,6 +172,7 @@ body {
     background-color: var(--hover-bg);
 }
 
+/* --------------------------------------------- */
 /* Botones */
 .btn-orange {
     background-color: var(--btn-orange-bg);
@@ -180,10 +186,46 @@ body {
         color: var(--text-color-light);
     }
 
-/* Tabla */
+/* --------------------------------------------- */
+/* Tabla y sección de cursos */
+.card-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .card-box h5 {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
 .table-responsive {
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-x: auto;
     box-shadow: var(--box-shadow);
     background: #fff;
     border-radius: 10px;
     padding: 1rem;
 }
+
+.table {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table thead th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+    }

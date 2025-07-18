@@ -205,7 +205,27 @@ namespace WebAcademia.DAL
         }
 
 
+        public List<CursoDTO> ObtenerUltimosCursos(int cantidad)
+        {
+            using (var db = new AppDBContext())
+            {
+                var cursos = db.Cursos
+                    .OrderByDescending(c => c.CursoID)
+                    .Take(cantidad)
+                    .Select(c => new CursoDTO
+                    {
+                        CursoID = c.CursoID,
+                        Nombre = c.Nombre,
+                        Descripcion = c.Descripcion,
+                        InstructorNombre = c.Instructor.Nombre,
+                        CupoMaximo = c.CupoMaximo,
+                        Activo = c.Activo
+                    })
+                    .ToList();
 
+                return cursos;
+            }
+        }//ObtenerUltimosCursos
 
     }//class
 }

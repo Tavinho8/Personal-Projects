@@ -74,14 +74,23 @@
                     <table class="table table-striped table-hover align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th>Curso</th>
+                                <th>Nombre del Curso</th>
                                 <th>Instructor</th>
                                 <th>Cupo Máximo</th>
-                                <th>Estado</th>
+                                <th>Activo</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Aquí tu loop para mostrar cursos -->
+                            <asp:Repeater ID="rptUltimosCursos" runat="server">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Eval("Nombre") %></td>
+                                        <td><%# Eval("InstructorNombre") %></td>
+                                        <td><%# Eval("CupoMaximo") %></td>
+                                        <td><%# Convert.ToBoolean(Eval("Activo")) ? "Sí" : "No" %></td>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </tbody>
                     </table>
                 </div>

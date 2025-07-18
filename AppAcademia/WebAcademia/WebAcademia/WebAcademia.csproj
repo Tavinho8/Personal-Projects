@@ -136,6 +136,7 @@
     <Content Include="Pages\Admin\UsuariosAdmin.aspx" />
     <Content Include="Pages\Admin\UsuariosFormAdmin.aspx" />
     <Content Include="Pages\Error.aspx" />
+    <Content Include="Pages\Estudiante\EstudianteAdmin.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Logout.aspx" />
@@ -200,6 +201,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Shared\StyleAdmin\StyleAdminDashboard.css" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -266,6 +268,13 @@
     <Compile Include="Pages\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Estudiante\EstudianteAdmin.aspx.cs">
+      <DependentUpon>EstudianteAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Estudiante\EstudianteAdmin.aspx.designer.cs">
+      <DependentUpon>EstudianteAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -294,6 +303,9 @@
     <Compile Include="Pages\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Shared\Clases\BaseCursosPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -319,7 +331,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Pages\Estudiante\" />
     <Folder Include="Pages\Instructor\" />
   </ItemGroup>
   <ItemGroup>
